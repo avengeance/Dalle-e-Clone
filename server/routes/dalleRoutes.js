@@ -29,12 +29,15 @@ router.route("/").post(async (req, res) => {
       size: "1024x1024",
       response_format: "b64_json",
     });
+    console.log(aiResponse);
     const image = aiResponse.data.data[0].b64_json;
     // How do we send it to the front end?
     res.status(200).json({ photo: image });
   } catch (error) {
     console.log(error);
-    res.status(500).send(error?.response.data.error.message);
+    res
+      .status(500)
+      .send(error?.response.data.error.message || "Something went wrong");
   }
 });
 
