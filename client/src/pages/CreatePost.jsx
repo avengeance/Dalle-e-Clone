@@ -61,7 +61,7 @@ const CreatePost = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "https://dalle-arbb.onrender.com/api/v1/post",
+          "https://dalle-clone-backend-bw44.onrender.com/api/v1/post",
           {
             method: "POST",
             headers: {
@@ -151,8 +151,7 @@ const CreatePost = () => {
 
         <div className="mt-10">
           <p className="mt-2 text-[#666e75] text-[14px]">
-            ** Once you have created the image you want, you can share it with
-            others in the community **
+            ** Once you have created the image you want, share it **
           </p>
           <button
             type="submit"
