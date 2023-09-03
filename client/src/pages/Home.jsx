@@ -13,7 +13,9 @@ const RenderCards = ({ data, title }) => {
 };
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // Start with loaded state
+  const [loading, setLoading] = useState(true);
   const [allPosts, setAllPosts] = useState(null);
 
   const [searchText, setSearchText] = useState("");
@@ -21,8 +23,6 @@ const Home = () => {
   const [searchedResults, setSearchedResults] = useState(null);
 
   const fetchPosts = async () => {
-    setLoading(true);
-
     try {
       const response = await fetch(
         "https://dalle-clone-backend-bw44.onrender.com/api/v1/post",
@@ -37,9 +37,11 @@ const Home = () => {
       if (response.ok) {
         const result = await response.json();
         setAllPosts(result.data.reverse());
+        setLoading(false);
       }
     } catch (err) {
       alert(err);
+      setLoading(false);
     } finally {
       setLoading(false);
     }
